@@ -114,3 +114,4 @@ void printDFS_inorder(node_t * current)
   if (current->left != NULL)   printDFS_inorder(current->left);      // check left, then recursive call
   if (current != NULL)         printf("%d ", current->val);          // read the current node in the tree.
   if (current->right != NULL)  printDFS_inorder(current->right);     // check right, then recursive call
+}
