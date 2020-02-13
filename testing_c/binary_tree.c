@@ -16,7 +16,9 @@ typedef struct node
 
 void insert(node_t * tree,int val);
 void print_tree(node_t * current);
-void printDFS(node_t * current);
+void printDFS_preorder(node_t * current);
+void printDFS_postorder(node_t * current);
+void printDFS_inorder(node_t * current);
 
 int main()
 {
@@ -32,7 +34,15 @@ int main()
   insert(test_list,4);
   insert(test_list,3);
 
-  printDFS(test_list);
+  //print different traversals types.
+  printf("pre-order: ");
+  printDFS_preorder(test_list);
+  printf("\n");
+  printf("post-order: ");
+  printDFS_postorder(test_list);
+  printf("\n");
+  printf("inorder: ");
+  printDFS_inorder(test_list);
   printf("\n");
 }
 
@@ -73,13 +83,34 @@ void insert(node_t * tree, int val)
   }
 }
 
+
 /* depth-first search, pre-order */
-void printDFS(node_t * current)
+void printDFS_preorder(node_t * current)
 {
   /* change the code here. CHANGED */
   if (current == NULL)         return;   /* security measure */
-  if (current != NULL)         printf("%d ", current->val);  // read the current node in the tree.
-  if (current->left != NULL)   printDFS(current->left);      // check left, then recursive call
-  if (current->right != NULL)  printDFS(current->right);     // check right, then recursive call
+  if (current != NULL)         printf("%d ", current->val);           // read the current node in the tree.
+  if (current->left != NULL)   printDFS_preorder(current->left);      // check left, then recursive call
+  if (current->right != NULL)  printDFS_preorder(current->right);     // check right, then recursive call
 
 }
+
+/* depth-first search, post-order */
+void printDFS_postorder(node_t * current)
+{
+  /* change the code here. CHANGED */
+  if (current == NULL)         return;   /* security measure */
+  if (current->left != NULL)   printDFS_postorder(current->left);      // check left, then recursive call
+  if (current->right != NULL)  printDFS_postorder(current->right);     // check right, then recursive call
+  if (current != NULL)         printf("%d ", current->val);            // read the current node in the tree.
+
+}
+
+/* depth-first search, in-order */
+void printDFS_inorder(node_t * current)
+{
+  /* change the code here. CHANGED */
+  if (current == NULL)         return;   /* security measure */
+  if (current->left != NULL)   printDFS_inorder(current->left);      // check left, then recursive call
+  if (current != NULL)         printf("%d ", current->val);          // read the current node in the tree.
+  if (current->right != NULL)  printDFS_inorder(current->right);     // check right, then recursive call
