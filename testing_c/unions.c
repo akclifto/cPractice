@@ -59,15 +59,15 @@ union Exercise {
 void main() {
 
     //standard
-    operator op;
+    struct operator op;
     op.type = 0;
     op.intNum = 256;
     //union style 1
-    operator_u1 op1;
+    struct operator_u1 op1;
     op1.type = 1;
-    op.types.intNum = 350;
+    op1.types.intNum = 350;
     //union style 2
-    operator_u2 op2;
+   struct operator_u2 op2;
     op2.type = 2;
     op2.intNum = 355;
     //union style 3 : the "Coins" union struct
@@ -77,7 +77,7 @@ void main() {
     change.nickel = 5;
     change.penny = 1;
         
-    printf("quarter: %d, dime: %d, nickel: %d, penny: %d", 
+    printf("quarter: %d, dime: %d, nickel: %d, penny: %d\n", 
         change.coins[0], change.coins[1], change.coins[2], change.coins[3]);
 
 
@@ -99,5 +99,3 @@ void main() {
 
         //prints I understand Unions!
 }
-
-
